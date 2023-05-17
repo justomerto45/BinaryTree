@@ -12,8 +12,6 @@ namespace BinaryTree
             // erstellt eine liste von zahlen
             List<int> numbers = new List<int> { 46, 27, 64, 9, 35, 51, 75, 4, 24, 47, 68, 82, 30, 90, 39 };
 
-
-            
             // erstellt einen binärbaum aus der liste von zahlen
             Node root = Node.CreateTree(numbers, 46);
 
