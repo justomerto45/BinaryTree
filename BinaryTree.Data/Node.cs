@@ -20,20 +20,23 @@ namespace BinaryTree.Data
         }
 
         // erstellt einen binärbaum aus einer liste von zahlen
-        public static Node CreateTree(List<int> numbers)
+        public static Node CreateTree(List<int> numbers, int rootValue)
         {
-            if (numbers == null || numbers.Count == 0)
-                return null;
+            Node root = new Node(rootValue);
 
-            Node root = new Node(numbers[0]);
-            for (int i = 1; i < numbers.Count; i++)
-                AddNode(root, numbers[i]);
+            foreach (int number in numbers)
+            {
+                if (number != rootValue)
+                {
+                    AddNode(root, number);
+                }
+            }
 
             return root;
         }
 
         // fügt einen knoten zum baum hinzu (rekursiv)
-        private static void AddNode(Node node, int number)
+        public static void AddNode(Node node, int number)
         {
             if (number < node.ID)
             {
@@ -50,6 +53,7 @@ namespace BinaryTree.Data
                     AddNode(node.RightNode, number);
             }
         }
+
 
         // findet den minimalwert im baum (rekursiv)
         public int FindMin()
@@ -88,25 +92,31 @@ namespace BinaryTree.Data
         }
 
         // gibt die zahlen im baum in aufsteigender reihenfolge aus (rekursiv)
-        public void PrintInOrder()
+        public void PrintAscending()
         {
             if (this == null)
                 return;
 
-            this.LeftNode?.PrintInOrder();
+            this.LeftNode?.PrintAscending();
             Console.Write(this.ID + " ");
-            this.RightNode?.PrintInOrder();
+            this.RightNode?.PrintAscending();
         }
 
         // gibt die zahlen im baum in absteigender reihenfolge aus (rekursiv)
-        public void PrintInReverseOrder()
+        public void PrintDescending()
         {
             if (this == null)
                 return;
 
-            this.RightNode?.PrintInReverseOrder();
+            this.RightNode?.PrintDescending();
             Console.Write(this.ID + " ");
-            this.LeftNode?.PrintInReverseOrder();
+            this.LeftNode?.PrintDescending();
+        }
+
+        public void InsertBinary(int number)
+        {
+
+
         }
     }
 }
